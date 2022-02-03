@@ -39,6 +39,12 @@ Arguments:
   --nodes               number of nodes
 ```
 
+## A. Duct segmentation
+
+## B. Duct ROI classification
+
+## C. WSI-level and ROI-level inference
+
 ## References
 1. Parvatikar, Akash, et al. "Modeling Histological Patterns for Differential Diagnosis of Atypical Breast Lesions." International Conference on Medical Image Computing and Computer-Assisted Intervention. Springer, Cham, 2020.
 2. Parvatikar, Akash, et al. "Prototypical Models for Classifying High-Risk Atypical Breast Lesions." International Conference on Medical Image Computing and Computer-Assisted Intervention. Springer, Cham, 2021.
