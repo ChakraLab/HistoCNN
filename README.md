@@ -1,6 +1,6 @@
 # HistoCNN
 
-Implementation of a Graph Neural Network for histology image classification tasks. 
+Implementation of a CNN for histology image classification tasks. 
 
 ## Table of Contents
 
