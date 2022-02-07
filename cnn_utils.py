@@ -29,17 +29,13 @@ import time
 def dloader(fp):
     """custom dataloader to workaround thresholding bug in PIL"""
     im = PIL.Image.open(fp)
-    im = im.point(lambda x: x * (255 / 65535)).convert("RGB")
     return im
 
 def load_dataset(train_data_path, val_data_path, test_data_path, batch_size, resize_to, cuda, gpu, world_size, rank):
 
     ts = transforms.Compose([
         transforms.Resize(resize_to),
-        transforms.CenterCrop(224),
-        #transforms.Grayscale(1),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
         
     train_dataset = ImageFolder(root=train_data_path, transform=ts, loader=dloader)
@@ -58,4 +54,3 @@ def load_dataset(train_data_path, val_data_path, test_data_path, batch_size, res
                                                pin_memory=True, sampler=test_sampler)
     
     return train_iterator, val_iterator, test_iterator
-
