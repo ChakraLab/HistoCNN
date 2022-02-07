@@ -26,6 +26,9 @@ The code can be simply run with:
 
 ```sh
 python resnet_run.py
+python densenet_run.py
+python squeezenet_run.py
+python resnext50_run.py
 ```
 
 The optional arguments are:
