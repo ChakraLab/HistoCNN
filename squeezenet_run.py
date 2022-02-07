@@ -24,11 +24,11 @@ from google_drive_downloader import GoogleDriveDownloader as gdd
 from cnn_utils import dloader, load_dataset
 
 # create directory to save train model performances
-if os.path.isdir('resnet') == True:
-    shutil.rmtree("resnet")
-    os.makedirs("resnet")
+if os.path.isdir('squeezenet') == True:
+    shutil.rmtree("squeezenet")
+    os.makedirs("squeezenet")
 else:
-    os.makedirs("resnet")
+    os.makedirs("squeezenet")
 
 # Download data
 gdd.download_file_from_google_drive(file_id='1uVWstyM_-yfwrsFx9TAZSMBMhjL0ukis', dest_path='./data/LRHR_data_normalized', unzip=False)
@@ -52,7 +52,7 @@ def main(gpu, args):
         torch.cuda.set_device(args.gpu)
         
     SAVE_DIR = 'models'
-    MODEL_SAVE_PATH = os.path.join(SAVE_DIR, 'resnet18_lrhr_v1.pt')
+    MODEL_SAVE_PATH = os.path.join(SAVE_DIR, 'squeezenet_lrhr_v1.pt')
     
     if not os.path.isdir(f'{SAVE_DIR}'):
         os.makedirs(f'{SAVE_DIR}')
@@ -69,9 +69,9 @@ def main(gpu, args):
                                                                  resize_to=(256,256), cuda=True, gpu=args.gpu, world_size=world_size, rank=rank)
     
     print('*** Create model ***')
-    model = models.resnet18(pretrained=True)
-    num_ftrs = model.fc.in_features
-    model.fc = nn.Linear(num_ftrs, 2)
+    model = models.squeezenet1_0(pretrained=True)
+    #num_ftrs = model.fc.in_features
+    #model.fc = nn.Linear(num_ftrs, 2)
     
     print(cuda)
     if cuda==True:
@@ -124,14 +124,14 @@ def main(gpu, args):
                         val_loss,
                         val_acc,
                     ))
-                with open('resnet/training.txt', 'a') as training:
+                with open('squeezenet/training.txt', 'a') as training:
                     training.write('Step {:05d} | Train loss {:.4f} | Over {} | Val loss {:.4f} | Val acc {:.4f}\n'.format(step,np.mean(losses),len(losses),val_loss,val_acc))
                     training.close()
                     
                 model.train()
                 
                 train_time = time.time() - start_time
-                with open('resnet/time.txt', 'a') as training:
+                with open('squeezenet/time.txt', 'a') as training:
                     training.write('Step {:05d} | {}\n'.format(step,train_time))
                     training.close()
                 
@@ -165,7 +165,7 @@ def test(data_loader, model, loss_fcn):
 
 if __name__ == '__main__':
     
-    parser = argparse.ArgumentParser(description='ResNet')
+    parser = argparse.ArgumentParser(description='SqueezeNet')
     
     parser.add_argument("--lr", type=float, default=1e-4, help="learning rate")
     parser.add_argument("--weight-decay",type=float,default=5e-4,help="Weight for L2 loss")
