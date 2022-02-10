@@ -24,12 +24,12 @@ It depends on a few Python packages, including:
 ## Usage
 The two scripts to run are:
 
-Segmentation:
+## Segmentation:
 ```sh
 python3 unet_run.py
 ```
 
-Classification:
+## Classification:
 ```sh
 python3 resnet_run.py
 ```
