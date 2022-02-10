@@ -22,10 +22,16 @@ It depends on a few Python packages, including:
 * google_drive_downloader - [GoogleDriveDownloader](https://pypi.org/project/googledrivedownloader/)
 
 ## Usage
-The code can be simply run with:
+The two scripts to run are:
 
+Segmentation:
 ```sh
-python resnet_run.py
+python3 unet_run.py
+```
+
+Classification:
+```sh
+python3 resnet_run.py
 ```
 
 The optional arguments are:
