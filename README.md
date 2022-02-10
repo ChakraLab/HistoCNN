@@ -24,12 +24,12 @@ It depends on a few Python packages, including:
 ## Usage
 The two scripts to run are:
 
-## Segmentation:
+## 1. Segmentation:
 ```sh
 python3 unet_run.py
 ```
 
-## Classification:
+## 2. Classification:
 ```sh
 python3 resnet_run.py
 ```
@@ -44,12 +44,6 @@ Arguments:
   --gpus                number of GPUs
   --nodes               number of nodes
 ```
-
-## A. Duct segmentation
-
-## B. Duct ROI classification
-
-## C. WSI-level and ROI-level inference
 
 ## References
 1. Parvatikar, Akash, et al. "Modeling Histological Patterns for Differential Diagnosis of Atypical Breast Lesions." International Conference on Medical Image Computing and Computer-Assisted Intervention. Springer, Cham, 2020.
